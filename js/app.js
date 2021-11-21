@@ -5,7 +5,7 @@ const ingresos = [
 
 const egresos = [
 	new Egreso('Renta departamento', 900000),
-	new Egreso('Ropa', 200000)
+	new Egreso('Ropa', 300000)
 ];
 
 let cargarApp = () => {
