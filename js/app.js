@@ -63,7 +63,8 @@ const crearIngresoHTML = (ingreso) => {
 					<div class="elemento_valor">+ ${formatoMoneda(ingreso.valor)}</div>
 						<div class="elemento_eliminar">
 							<button class='elemento_eliminar--btn'>
-								<ion-icon name="close-circle-outline" onclick='eliminarIngreso(${ingreso.id})'></ion-icon>
+								<ion-icon name="close-circle-outline"
+								onclick='eliminarIngreso(${ingreso.id})'></ion-icon>
 							</button>
 						</div>
 					</div>
@@ -110,4 +111,23 @@ let eliminarEgreso = (id)=>{
 		egresos.splice(indiceEliminar, 1);
 		cargarCabecero();
 		cargarEgresos();
+}
+
+let agregarDato = ()=>{
+		let forma = document.forms['forma'];
+		let tipo = forma['tipo'];
+		let descripcion = forma['descripcion'];
+		let valor = forma['valor'];
+		if(descripcion.value !== '' && valor.value !== ''){
+				if(tipo.value === 'ingreso'){
+						ingresos.push( new Ingreso(descripcion.value, +valor.value));
+						cargarCabecero();
+						cargarIngresos();
+				}
+				else if(tipo.value === 'egreso'){
+					egresos.push( new Egreso(descripcion.value, +valor.value));
+					cargarCabecero();
+					cargarEgresos();
+				}
+		}
 }
